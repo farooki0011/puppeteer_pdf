@@ -22,7 +22,6 @@ Or install it yourself as:
 
 ## Usage
 
-git push origin https://muneebfarooqi:Farooqi999_@github.com/muneebfarooqi/puppeteer_pdf.git
 TODO: Write usage instructions here
 
 ## Development
