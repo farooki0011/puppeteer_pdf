@@ -24,6 +24,10 @@ module PuppeteerPdf
       file.close
       system("node #{tmp_js_file_name}") # GENERATE EXPORT
       system("rm -rf #{tmp_js_file_name}")
+      puts "############################################################################################################"
+      puts "PDF IS GENERATED : #{output_file_path}"
+      puts "############################################################################################################"
+      output_file_path
   end
 
   def self.generate_random_string
