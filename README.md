@@ -29,11 +29,11 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 require 'puppeteer_pdf'
 url = 'https://developers.google.com/web/tools/puppeteer'
 output_path = '/system_path/test.pdf'
-PuppeteerPdf.generate_pdf(url, output_path)
+PuppeteerPdf.generate_pdf(url, output_path) # '/system_path/test.pdf'
 ```
 
 ## Contributing
