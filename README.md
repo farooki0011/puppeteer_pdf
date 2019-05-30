@@ -36,6 +36,20 @@ output_path = '/system_path/test.pdf'
 PuppeteerPdf.generate_pdf(url, output_path) # '/system_path/test.pdf'
 ```
 
+## Options 
+
+```ruby
+opts = {}
+opts[:height] = 600
+opts[:width] = 1225
+opts[:layout] = 'Landscape'
+opts[:print_background] = true 
+opts[:header_text] = 'Company Name'
+opts[:footer_text] = 'Any Text Information'
+PuppeteerPdf.generate_pdf(url, output_path, opts)
+
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/muneeb0011/puppeteer_pdf. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
