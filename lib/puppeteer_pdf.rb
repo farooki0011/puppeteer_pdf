@@ -4,21 +4,39 @@ require 'securerandom'
 module PuppeteerPdf
   class Error < StandardError; end
 
-  def self.generate_pdf(url, output_file_path ,opts = {})
-      random_string = generate_random_string
-      page_height = opts[:height] || 600
-      page_width = opts[:width] || 1125
-      page_layout = opts[:layout] || 'Landscape'
-      print_background = opts[:print_background] || true
-      header_text = opts[:header_text] || ''
-      footer_text = opts[:footer_text] || ''
+  def self.color_coding(text, color = 'red')
+      case color
+      when 'red'
+          puts "\e[31m#{text}\e[0m"
+      when 'green'
+          "\e[32m#{text}\e[0m"
+      when 'blue'
+          "\e[34m#{text}\e[0m"
+      end
+  end
 
-      raise "ERROR : height must be Integer" unless page_height.class == Integer
-      raise "ERROR : widgth must be Integer" unless page_width.class == Integer
-      raise "ERROR : layout must be between ['Landscape']" unless ['Landscape'].include?(page_layout)
-      raise "ERROR : print_background must be Boolean" unless [TrueClass, FalseClass].include?(print_background.class)
-      raise "ERROR : header_text must be String" unless header_text.class == String
-      raise "ERROR : footer_text must be String" unless footer_text.class == String
+  def self.generate_pdf(url, output_file_path ,opts = {})
+      include_page_numbers  =  opts[:include_page_numbers] || true
+      random_string         = generate_random_string
+      page_height           = opts[:height] || 600
+      page_width            = opts[:width] || 1125
+      page_layout           = opts[:layout] || 'Landscape'
+      print_background      = opts[:print_background] || true
+      header_text           = opts[:header_text] || ''
+      footer_text           = opts[:footer_text] || ''
+      format                = opts[:format] || 'A4'
+      timeout               = opts[:timeout] || 5000
+
+      color_coding("ERROR : height must be Integer", 'red') unless page_height.class == Integer
+      color_coding("ERROR : widgth must be Integer", 'red') unless page_width.class == Integer
+      color_coding("ERROR : layout must be between ['Landscape']", 'red') unless ['Landscape'].include?(page_layout)
+      color_coding("ERROR : print_background must be Boolean", 'red') unless [TrueClass, FalseClass].include?(print_background.class)
+      color_coding("ERROR : header_text must be String", 'red') unless header_text.class == String
+      color_coding("ERROR : footer_text must be String", 'red') unless footer_text.class == String
+      color_coding("ERROR : timeout must be Integer", 'red') unless timeout.class == Integer
+      color_coding("ERROR : format must be between ['A4']", 'red') unless ['A4'].include?(format)
+      color_coding("ERROR : include_page_numbers must be Boolean", 'red') unless [TrueClass, FalseClass].include?(include_page_numbers.class)
+
 
       need_to_display_headers = (header_text == '' && footer_text == '') == true ? false : true
 
@@ -40,9 +58,9 @@ module PuppeteerPdf
       file.close
       system("node #{tmp_js_file_name}") # GENERATE EXPORT
       system("rm -rf #{tmp_js_file_name}")
-      puts "############################################################################################################"
-      puts "PDF IS GENERATED : #{output_file_path}"
-      puts "############################################################################################################"
+      color_coding("############################################################################################################", 'blue')
+      color_coding("PDF IS GENERATED : #{output_file_path}", 'green')
+      color_coding("############################################################################################################", 'blue')
       output_file_path
   end
 

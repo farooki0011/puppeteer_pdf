@@ -2,19 +2,21 @@
 
 PuppeteerPdf is using Puppeteer library organized by Google. It's a lightest gem to generate PDF's using 
 URL. PuppeteerPdf is using Headless to open webpage and then simply convert it into PDF. 
-
-## Installation
+### Prerequisite
 
 Before installing puppeteer_pdf gem system must have puppeteer library installed, it can be installed by
 
 ```
-npm i puppeteer
-# or "yarn add puppeteer"
+- nvm install 8
+- npm i puppeteer  # or "yarn add puppeteer"
+
 ```
 
  or visit https://developers.google.com/web/tools/puppeteer/
+ 
+## Installation
 
-Once it's installed sdd this line to your application's Gemfile:
+Once all prerequisites are installed add this line to your application's Gemfile:
 
 ```ruby
 gem 'puppeteer_pdf'
@@ -40,13 +42,17 @@ PuppeteerPdf.generate_pdf(url, output_path) # '/system_path/test.pdf'
 ## Options 
 
 ```ruby
-opts = {}
-opts[:height] = 600
-opts[:width] = 1225
-opts[:layout] = 'Landscape'
-opts[:print_background] = true 
-opts[:header_text] = 'Company Name'
-opts[:footer_text] = 'Any Text Information'
+opts = {
+    height: 600,
+    width: 1225,
+    layout: 'Landscape',
+    format: 'A4',
+    timeout: 10000,
+    header_text: 'Company Name',
+    footer_text: 'Any Text Information',
+    print_background: true,
+    include_page_numbers: true,
+    {
 PuppeteerPdf.generate_pdf(url, output_path, opts)
 
 ```
