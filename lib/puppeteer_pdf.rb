@@ -25,7 +25,7 @@ module PuppeteerPdf
       header_text           = opts[:header_text] || ''
       footer_text           = opts[:footer_text] || ''
       format                = opts[:format] || 'A4'
-      timeout               = opts[:timeout] || 5000
+      timeout               = opts[:timeout] || 0
 
       color_coding("ERROR : height must be Integer", 'red') unless page_height.class == Integer
       color_coding("ERROR : widgth must be Integer", 'red') unless page_width.class == Integer
@@ -48,8 +48,8 @@ module PuppeteerPdf
                           const browser = await puppeteer.launch();
                           const page = await browser.newPage();
                           await page.setViewport({ width: #{page_height}, height: #{page_width} })
-                          await page.goto('#{url}', {waitUntil: 'networkidle2'});
-                          await page.pdf({path: '#{output_file_path}', width: '#{page_width}px', height: '#{page_height}px', layout: '#{page_layout}' , printBackground: #{print_background}, displayHeaderFooter: #{need_to_display_headers},
+                          await page.goto('#{url}', {waitUntil: 'networkidle2', timeout: #{timeout}});
+                          await page.pdf({path: '#{output_file_path}', format: '#{format}', width: '#{page_width}px', height: '#{page_height}px', layout: '#{page_layout}' , printBackground: #{print_background}, displayHeaderFooter: #{need_to_display_headers},
   margin: {top: 10, bottom: 40}, headerTemplate: '<span>#{header_text}</span>' });
                           await browser.close();
                     })();"
