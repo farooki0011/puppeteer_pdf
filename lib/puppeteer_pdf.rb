@@ -67,4 +67,12 @@ module PuppeteerPdf
   def self.generate_random_string
     SecureRandom.alphanumeric[0..5]
   end
+
+  # TODO : REMOVE THESE LINES MUNEEB WHEN YOU ARE DONE WITH REMEMBERING
+  # 1 - MAKE CHANGES
+  # 2 - TEST CHANGES
+  # 3 - TEST THEM AGAIN
+  # 4 - PUSH THE CODE TO GIT
+  # 5 - gem build puppeteer_pdf.gemspec
+  # 6 - gem push puppeteer_pdf.XXX.gem
 end
