@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["muneebahmadfarooqi@gmail.com"]
 
   spec.summary       = "A ruby gem to create PDF from URL"
-  spec.description   = "Puppeteer uses headless to create PDF from public URL"
+  spec.description   = "A lightweight HTML to PDF generation GEM"
   spec.homepage      = "https://github.com/muneeb0011/puppeteer_pdf"
   spec.license       = "MIT"
 
