@@ -27,15 +27,15 @@ module PuppeteerPdf
       format                = opts[:format] || 'A4'
       timeout               = opts[:timeout] || 0
 
-      color_coding("ERROR : height must be Integer", 'red') unless page_height.class == Integer
-      color_coding("ERROR : widgth must be Integer", 'red') unless page_width.class == Integer
-      color_coding("ERROR : layout must be between ['Landscape']", 'red') unless ['Landscape'].include?(page_layout)
-      color_coding("ERROR : print_background must be Boolean", 'red') unless [TrueClass, FalseClass].include?(print_background.class)
-      color_coding("ERROR : header_text must be String", 'red') unless header_text.class == String
-      color_coding("ERROR : footer_text must be String", 'red') unless footer_text.class == String
-      color_coding("ERROR : timeout must be Integer", 'red') unless timeout.class == Integer
-      color_coding("ERROR : format must be between ['A4']", 'red') unless ['A4'].include?(format)
-      color_coding("ERROR : include_page_numbers must be Boolean", 'red') unless [TrueClass, FalseClass].include?(include_page_numbers.class)
+      color_coding("PuppeteerPdf ERROR : height must be Integer", 'red') unless page_height.class == Integer
+      color_coding("PuppeteerPdf ERROR : widgth must be Integer", 'red') unless page_width.class == Integer
+      color_coding("PuppeteerPdf ERROR : layout must be between ['Landscape', '']", 'red') unless ['Landscape', ''].include?(page_layout)
+      color_coding("PuppeteerPdf ERROR : print_background must be Boolean", 'red') unless [TrueClass, FalseClass].include?(print_background.class)
+      color_coding("PuppeteerPdf ERROR : header_text must be String", 'red') unless header_text.class == String
+      color_coding("PuppeteerPdf ERROR : footer_text must be String", 'red') unless footer_text.class == String
+      color_coding("PuppeteerPdf ERROR : timeout must be Integer", 'red') unless timeout.class == Integer
+      color_coding("PuppeteerPdf ERROR : format must be between ['A4', '']", 'red') unless ['A4', ''].include?(format)
+      color_coding("PuppeteerPdf ERROR : include_page_numbers must be Boolean", 'red') unless [TrueClass, FalseClass].include?(include_page_numbers.class)
 
 
       need_to_display_headers = (header_text == '' && footer_text == '') == true ? false : true

@@ -52,7 +52,7 @@ opts = {
     footer_text: 'Any Text Information',
     print_background: true,
     include_page_numbers: true,
-    {
+    }
 PuppeteerPdf.generate_pdf(url, output_path, opts)
 
 ```
