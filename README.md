@@ -7,7 +7,7 @@ URL. PuppeteerPdf is using Headless to open webpage and then simply convert it i
 Before installing puppeteer_pdf gem system must have puppeteer library installed, it can be installed by
 
 ```
-- nvm install 8
+- npm install 8
 - npm i puppeteer  # or "yarn add puppeteer"
 
 ```
